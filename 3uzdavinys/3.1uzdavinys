@@ -1,0 +1,74 @@
+#Module needed:
+#Requests: Requests allow you to send HTTP/1.1 requests extremely easily.
+# The HTTP request returns a response object with all of the required response data.
+# This module also does not come built-in with Python.
+# To install this type the below command in the terminal.
+
+#pip install requests
+#Approach:
+#Import the requests module
+#Sending request to get the IP Location Information
+#Extracting the location in JSON format
+#Printing the location extracted
+#Passing the city name and retrieving the weather data of the city
+#Printing the output
+
+import requests
+#Sending requests to get the IP Location Information
+res = requests.get('https://ipinfo.io/')
+# Receiving the response in JSON format
+data = res.json()
+#print(data)
+# Extracting the Location of the City from the response
+citydata = data['city']
+# Prints the Current Location
+print(citydata)
+# Passing the City name to the url
+url = 'https://wttr.in/{}'.format(citydata)
+# Getting the Weather Data of the City
+res = requests.get(url)
+# Printing the results!
+print(res.text)
+
+#output
+Vilnius
+Weather report: Vilnius
+
+       .-.      Light drizzle, fog, drizzle
+      (   ).    0(-5) °C       
+     (___(__)   ↑ 26 km/h      
+      ‘ ‘ ‘ ‘   1 km           
+     ‘ ‘ ‘ ‘    0.0 mm         
+                                                       ┌─────────────┐                                                       
+┌──────────────────────────────┬───────────────────────┤  Thu 12 Jan ├───────────────────────┬──────────────────────────────┐
+│            Morning           │             Noon      └──────┬──────┘     Evening           │             Night            │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│               Overcast       │               Overcast       │               Overcast       │               Overcast       │
+│      .--.     0(-6) °C       │      .--.     +1(-4) °C      │      .--.     +2(-2) °C      │      .--.     +2(-3) °C      │
+│   .-(    ).   ↑ 21-31 km/h   │   .-(    ).   ↑ 19-28 km/h   │   .-(    ).   ↑ 18-28 km/h   │   .-(    ).   ↑ 20-32 km/h   │
+│  (___.__)__)  10 km          │  (___.__)__)  10 km          │  (___.__)__)  10 km          │  (___.__)__)  10 km          │
+│               0.0 mm | 0%    │               0.0 mm | 0%    │               0.0 mm | 0%    │               0.0 mm | 0%    │
+└──────────────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
+                                                       ┌─────────────┐                                                       
+┌──────────────────────────────┬───────────────────────┤  Fri 13 Jan ├───────────────────────┬──────────────────────────────┐
+│            Morning           │             Noon      └──────┬──────┘     Evening           │             Night            │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│               Overcast       │               Overcast       │               Overcast       │  _`/"".-.     Patchy rain po…│
+│      .--.     +2(-2) °C      │      .--.     +3(-2) °C      │      .--.     +3(-2) °C      │   ,\_(   ).   +3(-2) °C      │
+│   .-(    ).   ↑ 19-30 km/h   │   .-(    ).   ↑ 19-29 km/h   │   .-(    ).   ↑ 20-31 km/h   │    /(___(__)  ↑ 21-31 km/h   │
+│  (___.__)__)  10 km          │  (___.__)__)  10 km          │  (___.__)__)  10 km          │      ‘ ‘ ‘ ‘  10 km          │
+│               0.0 mm | 0%    │               0.0 mm | 0%    │               0.0 mm | 0%    │     ‘ ‘ ‘ ‘   0.1 mm | 66%   │
+└──────────────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
+                                                       ┌─────────────┐                                                       
+┌──────────────────────────────┬───────────────────────┤  Sat 14 Jan ├───────────────────────┬──────────────────────────────┐
+│            Morning           │             Noon      └──────┬──────┘     Evening           │             Night            │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│               Overcast       │               Overcast       │               Overcast       │               Cloudy         │
+│      .--.     +2(-1) °C      │      .--.     +3(-1) °C      │      .--.     +3(-1) °C      │      .--.     +3(-1) °C      │
+│   .-(    ).   ↑ 13-22 km/h   │   .-(    ).   ↑ 15-22 km/h   │   .-(    ).   ↑ 14-22 km/h   │   .-(    ).   ↑ 15-23 km/h   │
+│  (___.__)__)  10 km          │  (___.__)__)  10 km          │  (___.__)__)  10 km          │  (___.__)__)  10 km          │
+│               0.0 mm | 0%    │               0.0 mm | 0%    │               0.0 mm | 0%    │               0.0 mm | 0%    │
+└──────────────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
+Location: Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, Lietuva [54.6870458,25.2829111]
+
+Process finished with exit code 0
