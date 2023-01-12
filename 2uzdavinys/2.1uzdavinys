@@ -1,0 +1,43 @@
+#parašykite funkciją, kuri į args priimtų url eilučių sąrašą
+# ir grąžintų, kokį serverį naudoja svetainė.
+# Atsakymas galėtų atrodyti maždaug taip:
+# URL                     Server
+# -------------------------------------
+# https://www.delfi.lt/   DWS
+# https://www.alfa.lt/    nginx/1.10.3 (Ubuntu)
+# https://www.15min.lt/   nginx
+# https://www.lrytas.lt/  shield
+# http://www.google.com/  gws
+
+import requests
+def headers_data(*args):
+    print('URL\t\t\t\t\tServer')
+    print('---'*100)
+    for site in args:
+        req_get = requests.get(site)
+        #print(r)
+        result = req_get.headers
+        #print(result)
+        print(f'{req_get.url}\t{result["Server"]}')
+        print('---' * 10)
+headers_data('http://delfi.lt', 'http://alfa.lt', 'http://15min.lt', 'http://lrytas.lt', 'http://google.com','https://www.lrt.lt/','https://www.tv3.lt/')
+
+#output
+URL					Server
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+https://www.delfi.lt/	DWS
+------------------------------
+https://www.alfa.lt/	nginx/1.14.0 (Ubuntu)
+------------------------------
+https://www.15min.lt/	nginx
+------------------------------
+https://www.lrytas.lt/	openresty
+------------------------------
+http://www.google.com/	gws
+------------------------------
+https://www.lrt.lt/	nginx
+------------------------------
+https://www.tv3.lt/	cloudflare
+------------------------------
+
+Process finished with exit code 0
